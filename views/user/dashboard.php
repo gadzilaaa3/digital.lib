@@ -187,42 +187,20 @@
         }
 
         let select = document.querySelector('.select'),
-            teachers = [
-                {name: 'Андреева Т.В.'},
-                {name: 'Астанин Р.В.'},
-                {name: 'Бадьина О.А'},
-                {name: 'Балдина Е.А'},  
-                {name: 'Барыльченко Н.Н.'},
-                {name: 'Балдина Е.А'},
-                {name: 'Балдина Е.А'},
-                {name: 'Балдина Е.А'},
-                {name: 'Балдина Е.А'},
-                {name: 'Балдина Е.А'},
-                {name: 'Балдина Е.А'},
-                {name: 'Балдина Е.А'},
-                {name: 'Балдина Е.А'},
-                {name: 'Балдина Е.А'},
-                {name: 'Балдина Е.А'},
-                {name: 'Балдина Е.А'},
-                {name: 'Балдина Е.А'},
-                {name: 'Балдина Е.А'},
-                {name: 'Балдина Е.А'},
-                {name: 'Балдина Е.А'},
-                {name: 'Балдина Е.А'},
-                {name: 'Балдина Е.А'},
-
-            ];
+            teachers = <?php echo json_encode(\App\Requests\Teachers::getForSelector()); ?>;
 
         for (let teacher of teachers) {
             let item = document.createElement('li');
-            item.innerHTML = teacher.name;
+            item.setAttribute("id", teacher.Code);
+            item.innerHTML = teacher.Fio;
             item.addEventListener('click', () => {
                 console.log(teacher);
-                select.querySelector('.header-selector span').innerHTML = teacher.name;
+                select.querySelector('.header span').innerHTML = teacher.Fio;
             });
 
             select.querySelector('ul').append(item);
         }
+
         var click = document.getElementById("click");
         var container = document.getElementById("onclick")
         var close = document.getElementsByClassName("close")[0];

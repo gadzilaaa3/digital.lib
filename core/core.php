@@ -12,3 +12,6 @@ require_once DIR . '/app/Facades/Http.php';
 
 // Controllers
 require_once DIR . '/app/Controllers/LoginController.php';
+
+// Requests
+require_once DIR . '/app/Requests/Teachers.php';

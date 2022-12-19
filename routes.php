@@ -18,17 +18,14 @@ get('/test', 'views/test.php');
 post('/test', 'views/test.php');
 
 //Routes for authenticated users
-if(Auth::check()){
-    // User Routes
-    get('/user/dashboard', 'views/user/dashboard.php');
-} else{
-    header("Location: /auth/login");
-}
-
-// ##################################################
-// ##################################################
-// ##################################################
-// any can be used for GETs or POSTs
+// User Routes
+get('/user/dashboard', function(){
+    if(Auth::check()){
+        get('/user/dashboard', 'views/user/dashboard.php');
+    } else{
+        header("Location: /auth/login");
+    }
+});
 
 // For GET or POST
 // The 404.php which is inside the views folder will be called
