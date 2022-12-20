@@ -8,15 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 id="test">Бам</h1>
-    <button onclick="test()">Сюда</button>
+    
 </body>
 </html>
-
-<script>
-    function test(){
-        let teachers = <?php echo \App\Requests\Teachers::getForSelector(); ?>;
-        let h1 = document.getElementById('test');
-        h1.innerText = teachers;
-    }
-</script>

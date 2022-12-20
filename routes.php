@@ -11,11 +11,20 @@ get('/auth/login', 'views/auth/login.php');
 post('/auth/login', function(){
     \App\Controllers\LoginController::post();
 });
+get('/auth/logout', function(){
+    \App\Controllers\LogoutController::get();
+});
 
 //Public routes
 //Test Routes
 get('/test', 'views/test.php');
-post('/test', 'views/test.php');
+
+get('/user/catalog', function(){
+    \App\Controllers\CatalogController::index();
+});
+get('/user/catalog/', function(){
+    \App\Controllers\CatalogController::get();
+});
 
 //Routes for authenticated users
 // User Routes
