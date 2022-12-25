@@ -1,4 +1,13 @@
+let previousPath = null;
+let currentPath = null;
+
 function getResource(path) {
+
+	previousPath = currentPath;
+	currentPath = path;
+
+	console.log('previous: ' + previousPath + '; current: ' + currentPath);
+
 	$.ajax({
 		url: 'https://cloud-api.yandex.net/v1/disk/resources',
 		method: 'get',
@@ -15,6 +24,17 @@ function createDivision(data) {
 
 	var content = document.getElementById('content');
 	content.innerHTML = "";
+
+	if (previousPath != null) {
+		var button = document.createElement('button');
+		button.type = "button";
+		button.className = "btn btn-primary";
+		button.onclick = function () {
+			getResource(previousPath);
+		}
+		button.innerText = "Назад";
+		content.append(button);
+	}
 
 	var items = data._embedded.items;
 
@@ -40,8 +60,10 @@ function createCard(item) {
 	card.append(ul);
 
 	if (item.type === "file") {
-		var link = createLink(item.public_url);
-		card.append(link);
+		if (typeof item.public_url !== 'undefined') {
+			var link = createLink(item.public_url);
+			card.append(link);
+		}
 	} else {
 		var button = document.createElement('button');
 		button.type = "button";

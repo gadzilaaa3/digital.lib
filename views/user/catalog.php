@@ -15,7 +15,7 @@
     <title>Digital Library</title>
 </head>
 <body>
-    <div class="container p-3">
+    <div class="container m-3">
         <div class="table">
 			<h2 class="mb-3">Диски преподавателя</h2>
 			<table class="table mt-3">
